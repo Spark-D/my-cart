@@ -54,6 +54,7 @@
 <script>
 import product from '../components/Product.vue'
 import { mapGetters } from 'vuex';
+import {eventBus} from '../main.js';
 export default {
   name: 'ProductView',
   components: {
@@ -70,6 +71,7 @@ export default {
     console.log("created");
     this.$store.dispatch('FETCH_PRODUCT_LIST');
     // this.refresh();
+    
   },
   methods: {
     refresh(){
@@ -79,12 +81,20 @@ export default {
       console.log(pageNo);
       this.$store.commit('SET_PAGE_NO', pageNo);
       // this.refresh();
-    }
+    },
+    
+    
   },
   computed :{
     ...mapGetters({
         getProdList : 'getProdList'
     }),
+    
+  },
+  mounted() {
+    eventBus.$on('insertCart', (data)=>{
+      alert(data);
+    })
   }
 }
 </script>

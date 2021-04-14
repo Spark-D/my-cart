@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+
 export default {
 name : "product",
   props: {
@@ -53,8 +55,10 @@ name : "product",
     }
   },
   methods:{
-      insertCart(productInfo) {
-        alert(productInfo);
+      insertCart : (productInfo) => {
+        // alert(productInfo);
+        console.log("insertCart");
+        eventBus.$meit('insertCart', productInfo);
       }
   }
 }

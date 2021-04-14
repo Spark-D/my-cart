@@ -1,6 +1,6 @@
 <template>
   <div id="productView">
-    <div data-v-56d83c02="" id="mainLayout" class="wrap" watchmallno="1" ppupmallno="1">
+    <!-- <div data-v-56d83c02="" id="mainLayout" class="wrap" watchmallno="1" ppupmallno="1"> -->
     <div id="skipNav"><a href="#content">본문 바로가기</a></div><!---->
     <nav role="navigation"></nav>
     <div class="dimContainer innerContent"></div>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <!-- 페이징 -->
-      <!--
+      
       <div data-v-35e7960e="" data-v-56d83c02="" class="paginationWrap wide">
         <div data-v-35e7960e="" class="pagination">
           <a data-v-35e7960e="" href="#" class="prev off"><span data-v-35e7960e="" class="hiddenTxt">이전</span></a>
@@ -43,11 +43,11 @@
           <a data-v-35e7960e="" href="#" class="next"><span data-v-35e7960e="" class="hiddenTxt">다음</span></a>
         </div>
       </div>
-      -->
+     
     </div>
     </div>
     </main> 
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 

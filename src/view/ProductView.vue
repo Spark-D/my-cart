@@ -92,8 +92,9 @@ export default {
     
   },
   mounted() {
-    eventBus.$on('insertCart', (data)=>{
-      alert(data);
+    eventBus.$on('insertCart', (productInfo)=>{
+      // alert(productInfo);
+      console.log("parent", productInfo);
     })
   }
 }

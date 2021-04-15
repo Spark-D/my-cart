@@ -12,11 +12,12 @@ function getCartList () {
     return axios.get( `${config.baseurl}/grpCartList`);
 }
 
+function insertCart (data) {
+    return axios.post( `${config.baseurl}/cart`, data);
+}
+
 export {
     getProductList,
     getCartList,
-    // deleteTask,
-    // detailTask,
-    // updateTask,
-    // getTaskWithComments
+    insertCart
 }

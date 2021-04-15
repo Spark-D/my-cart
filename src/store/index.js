@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getProductList, getCartList } from '../api/index.js'
+import { getProductList, getCartList, insertCart } from '../api/index.js'
 
 const EventBus = new Vue();
 Vue.use(Vuex);
@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
         // pageNo: 1,
         productListInfo: {},
         cartList: [],
+        insertResult: {}
     },
     getters:{ // computed랑 같은데 store에 있는것
         getProdList(state){
@@ -19,6 +20,9 @@ export const store = new Vuex.Store({
         },
         getCartList(state){
             return state.cartList;
+        },
+        insertCart(state) {
+            return state.insertResult;
         }
     },
     mutations:{
@@ -27,6 +31,9 @@ export const store = new Vuex.Store({
         },
         SET_CART_LIST(state, data){
             state.cartList = data;
+        },
+        SET_INSERT_CART_RESULT(state, data){
+            state.insertResult = data;
         }
     },
     actions: {
@@ -43,7 +50,7 @@ export const store = new Vuex.Store({
             })
         },
         FETCH_CART_LIST(context){
-            getCartList(this.state.pageNo)
+            getCartList()
             .then(response=> {
                 console.log(response.data);
                 context.commit('SET_CART_LIST', response.data);
@@ -52,5 +59,17 @@ export const store = new Vuex.Store({
                 console.log(error);
             })
         },
+        INSERT_CART(context, data){
+            insertCart(data)
+            .then(response => {
+                console.log(response);
+                if(response.status === 200){
+                    alert("등록되었습니다.");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        }
     }
 })

@@ -33,12 +33,6 @@
         <div data-v-35e7960e="" class="pagination">
           <a data-v-35e7960e="" href="#" class="prev off"><span data-v-35e7960e="" class="hiddenTxt">이전</span></a>
           <a v-for="index in 6" :key="index" data-v-35e7960e="" @click.prevent="changePage(index)" :class="{ active : getProdList.pageNo == index }" >{{index}}</a>
-          <!-- <a data-v-35e7960e="" @click.prevent="changePage(1)" class="active">1</a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(2)" class="">2 </a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(3)" class="">3 </a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(4)" class="">4 </a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(5)" class="">5 </a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(6)" class="">6 </a> -->
           <span data-v-35e7960e="" class="skip">...</span>
           <a data-v-35e7960e=""  class="">8</a>
           <a data-v-35e7960e="" href="#" class="next"><span data-v-35e7960e="" class="hiddenTxt">다음</span></a>
@@ -69,10 +63,8 @@ export default {
     }
   },
   created() {
-    console.log("created");
+    // console.log("created");
     this.refresh();
-    // this.$store.dispatch('FETCH_PRODUCT_LIST', this.pageNo);
-    // this.refresh();
     
   },
   methods: {
@@ -86,22 +78,31 @@ export default {
       this.refresh();
       
       // this.refresh();
-    },
-    // isActive : () => {
-    //   return true;
-    // }
-    
+    }
   },
   computed :{
     ...mapGetters({
-        getProdList : 'getProdList'
+        getProdList : 'getProdList',
+        insertCart : 'insertCart'
     }),
     
   },
   mounted() {
     eventBus.$on('insertCart', (productInfo)=>{
       // alert(productInfo);
-      console.log("parent", productInfo);
+      // console.log("parent", productInfo);
+      let omCart = {
+        mbNo: '1',
+        trNo: productInfo.trNo,
+        lrtrNo: productInfo.lrtrNo,
+        spdNo: productInfo.spdNo,
+        sitmNo: productInfo.sitmNo,
+        odQty: 1
+      };
+      // console.log(omCart);
+      
+      this.$store.dispatch('INSERT_CART', omCart);
+      
     })
   }
 }

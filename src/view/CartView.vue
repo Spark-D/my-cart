@@ -66,7 +66,7 @@ export default {
   },
   computed :{
     ...mapGetters({
-        getCartList: 'getCartList'
+        getCartList: 'getCartList',
     }),
     
   },
@@ -321,5 +321,52 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+}
+#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnOrder[data-v-7f6b5e24] {
+    display: block;
+    line-height: 52px;
+    text-align: center;
+    font-size: 18px;
+    background: #ef2a23;
+    color: #fff;
+    border-radius: 6px;
+}
+#sideArea.cartPriceWing .priceWrap .priceList dl dt[data-v-7f6b5e24] {
+    position: relative;
+    width: 50%;
+    display: table-cell;
+    padding-top: 3px;
+    font-size: 14px;
+    color: #757575;
+    line-height: 1.57;
+    letter-spacing: -.3px;
+    vertical-align: top;
+    white-space: normal;
+}
+#sideArea.cartPriceWing .priceWrap .priceTitle[data-v-7f6b5e24] {
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: -.06em;
+    margin-bottom: 28px;
+}
+#sideArea.cartPriceWing .priceWrap .totalPrice dd .price[data-v-7f6b5e24] {
+    font-size: 28px;
+    font-weight: 700;
+}
+#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnGift[data-v-7f6b5e24] {
+    display: block;
+    line-height: 34px;
+    text-align: center;
+    font-size: 13px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+#sideArea.cartPriceWing .priceWrap .priceTitle[data-v-7f6b5e24] {
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: -.06em;
+    margin-bottom: 28px;
 }
 </style>

@@ -9,13 +9,13 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     EventBus: EventBus,
     state: {
-        pageNo: 1,
-        products: [],
+        // pageNo: 1,
+        productListInfo: {},
         cartList: [],
     },
     getters:{ // computed랑 같은데 store에 있는것
         getProdList(state){
-            return state.products;
+            return state.productListInfo;
         },
         getCartList(state){
             return state.cartList;
@@ -23,21 +23,18 @@ export const store = new Vuex.Store({
     },
     mutations:{
         SET_PRODUCT_LIST(state, data) {
-            state.products = data;
-        },
-        SET_PAGE_NO(state, data){
-            state.pageNo = data;
+            state.productListInfo = data;
         },
         SET_CART_LIST(state, data){
             state.cartList = data;
         }
     },
     actions: {
-        FETCH_PRODUCT_LIST(context){
-            getProductList(this.state.pageNo)
+        FETCH_PRODUCT_LIST(context, pageNo){
+            getProductList(pageNo)
             .then(response=> {
-                console.log(response.data);
-                context.commit('SET_PRODUCT_LIST', response.data.catePdList.dataList);
+                // console.log(response.data);
+                context.commit('SET_PRODUCT_LIST', response.data.catePdList);
                 // context.commit('SET_PAGE_NO', response.data.catePdList.pageNo);
                 // this.state.items = response.data;
             })

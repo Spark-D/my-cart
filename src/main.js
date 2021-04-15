@@ -5,6 +5,7 @@ import { store } from './store/index.js';
 
 Vue.config.productionTip = false;
 export const eventBus = new Vue();
+// Vue.prototype.EventBus = new Vue();
 
 new Vue({
   render: h => h(App),

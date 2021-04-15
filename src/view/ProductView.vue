@@ -19,7 +19,7 @@
           <div data-v-867a9d34="" class="list-wrap">
             <ul data-v-867a9d34="" >
               <product 
-                  v-for="item in getProdList" 
+                  v-for="item in getProdList.dataList" 
                   :key="item.pdNo"
                   :productInfo="item">
               </product>
@@ -32,12 +32,13 @@
       <div data-v-35e7960e="" data-v-56d83c02="" class="paginationWrap wide">
         <div data-v-35e7960e="" class="pagination">
           <a data-v-35e7960e="" href="#" class="prev off"><span data-v-35e7960e="" class="hiddenTxt">이전</span></a>
-          <a data-v-35e7960e="" @click.prevent="changePage(1)" class="active">1</a>
+          <a v-for="index in 6" :key="index" data-v-35e7960e="" @click.prevent="changePage(index)" :class="{ active : getProdList.pageNo == index }" >{{index}}</a>
+          <!-- <a data-v-35e7960e="" @click.prevent="changePage(1)" class="active">1</a>
           <a data-v-35e7960e=""  @click.prevent="changePage(2)" class="">2 </a>
           <a data-v-35e7960e=""  @click.prevent="changePage(3)" class="">3 </a>
           <a data-v-35e7960e=""  @click.prevent="changePage(4)" class="">4 </a>
           <a data-v-35e7960e=""  @click.prevent="changePage(5)" class="">5 </a>
-          <a data-v-35e7960e=""  @click.prevent="changePage(6)" class="">6 </a>
+          <a data-v-35e7960e=""  @click.prevent="changePage(6)" class="">6 </a> -->
           <span data-v-35e7960e="" class="skip">...</span>
           <a data-v-35e7960e=""  class="">8</a>
           <a data-v-35e7960e="" href="#" class="next"><span data-v-35e7960e="" class="hiddenTxt">다음</span></a>
@@ -63,26 +64,32 @@ export default {
   data(){
     return{
       // productList: [],
-      // pageNo: "1",
+      pageNo: 1,
       // totalPageCnt : 1
     }
   },
   created() {
     console.log("created");
-    this.$store.dispatch('FETCH_PRODUCT_LIST');
+    this.refresh();
+    // this.$store.dispatch('FETCH_PRODUCT_LIST', this.pageNo);
     // this.refresh();
     
   },
   methods: {
     refresh(){
-      this.$store.dispatch('FETCH_PRODUCT_LIST');
+      // this.pageNo = pageNo;
+      this.$store.dispatch('FETCH_PRODUCT_LIST', this.pageNo);
     },
     changePage(pageNo){
       console.log(pageNo);
-      this.$store.commit('SET_PAGE_NO', pageNo);
+      this.pageNo = pageNo;
+      this.refresh();
+      
       // this.refresh();
     },
-    
+    // isActive : () => {
+    //   return true;
+    // }
     
   },
   computed :{

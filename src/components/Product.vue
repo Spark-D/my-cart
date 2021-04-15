@@ -58,6 +58,9 @@ name : "product",
       insertCart : (productInfo) => {
         eventBus.$emit('insertCart', productInfo);
       }
+  },
+  created() {
+    // console.log(this.$router);
   }
 }
 </script>

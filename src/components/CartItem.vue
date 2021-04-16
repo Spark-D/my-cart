@@ -20,7 +20,7 @@
     <img data-v-7f6b5e24="" src="//static.lotteon.com/p/order/assets/img/s_loading.gif" class="s_loading"></span><strong data-v-7f6b5e24="">{{cartItemInfo.product[0].slPrc}}</strong>원
             </p><p data-v-7f6b5e24="" class="priceInfo" style="display: none;">
             
-            </p><a data-v-7f6b5e24="" href="#none" class="couponChange">
+            </p><a data-v-7f6b5e24="" href="#none" class="couponChange" style="display:none">
             할인변경
             </a><div data-v-7f6b5e24="" class="btnWrap" style="display: none;"><button data-v-b41647a4="" data-v-7f6b5e24="" class="hasIcon util sizeFull alignLeft"><span data-v-b41647a4="" class="inner"><span data-v-b41647a4="" class="icon cart"></span><span data-v-b41647a4="" class="">
                 정기배송 담기

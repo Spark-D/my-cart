@@ -1,372 +1,614 @@
 <template>
   <div>
-    <main id="content" role="main" class="contentArea on"><form data-v-7f6b5e24="" method="POST" id="orderSheetForm"><input data-v-7f6b5e24="" type="hidden" id="cartSns" name="cartSns"><input data-v-7f6b5e24="" type="hidden" id="pdOdTypCd" name="pdOdTypCd"><input data-v-7f6b5e24="" type="hidden" id="drtPurYn" name="drtPurYn"><input data-v-7f6b5e24="" type="hidden" id="cartDvsCd" name="cartDvsCd" value="01"></form><form data-v-7f6b5e24="" method="POST" id="fixedReqFrm"><input data-v-7f6b5e24="" type="hidden" id="fprdDvCartSns" name="fprdDvCartSns"><input data-v-7f6b5e24="" type="hidden" id="prdTrNo" name="prdTrNo"><input data-v-7f6b5e24="" type="hidden" id="prdLrtrNo" name="prdLrtrNo"><input data-v-7f6b5e24="" type="hidden" id="prdTrGrpCd" name="prdTrGrpCd"></form><div data-v-7f6b5e24="" class="container"><h2 data-v-7f6b5e24="" class="pageTitle">
-      장바구니
-    </h2><div data-v-7f6b5e24="" class="cartWrap"><div data-v-7f6b5e24="" id="topTabArea" class="cartAffixTab"><div data-v-7f6b5e24="" class="vue-affix affix-top"><div data-v-7f6b5e24="" class="tabWrap default box full">
-      <div class="tabArea"><div class="scrollArea">
-        <ul>
-          <li><a href="#/cart" class="tab active"><span><span>일반<em>(2)</em></span></span></a></li>
-          <li><a href="#" class="tab"><span><span>장보기<em></em></span></span></a></li>
-          <li><a href="#" class="tab"><span><span>정기배송<em></em></span></span></a></li>
-        </ul>
-      </div><!----><!----><!----></div>
-      <div class="tabContentArea active"></div><div class="tabContentArea"><!----></div><div class="tabContentArea"><!----></div><!----></div></div></div><div data-v-7f6b5e24="" class="cartContents"><!---->
-      
-      
-      <div data-v-7f6b5e24="" class="detailWrap">
-        <div data-v-7f6b5e24="" class="itemController">
-
-          <div data-v-7f6b5e24="" class="checkboxController">
-            <input data-v-7f6b5e24="" id="checkboxController" type="checkbox" class="cur_hand">
-            <label data-v-7f6b5e24="" for="checkboxController" class="cur_hand">전체선택</label>
+    <main id="content" role="main" class="contentArea on">
+      <form method="POST" id="orderSheetForm">
+        <input type="hidden" id="cartSns" name="cartSns" /><input
+          type="hidden"
+          id="pdOdTypCd"
+          name="pdOdTypCd"
+        /><input type="hidden" id="drtPurYn" name="drtPurYn" /><input
+          type="hidden"
+          id="cartDvsCd"
+          name="cartDvsCd"
+          value="01"
+        />
+      </form>
+      <form method="POST" id="fixedReqFrm">
+        <input type="hidden" id="fprdDvCartSns" name="fprdDvCartSns" /><input
+          type="hidden"
+          id="prdTrNo"
+          name="prdTrNo"
+        /><input type="hidden" id="prdLrtrNo" name="prdLrtrNo" /><input
+          type="hidden"
+          id="prdTrGrpCd"
+          name="prdTrGrpCd"
+        />
+      </form>
+      <div class="container">
+        <h2 class="pageTitle">
+          장바구니
+        </h2>
+        <div class="cartWrap">
+          <div id="topTabArea" class="cartAffixTab">
+            <div class="vue-affix affix-top">
+              <div class="tabWrap default box full">
+                <div class="tabArea">
+                  <div class="scrollArea">
+                    <ul>
+                      <li>
+                        <a href="#/cart" class="tab active"
+                          ><span
+                            ><span>일반<em></em></span></span
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="#" class="tab"
+                          ><span
+                            ><span>장보기<em></em></span></span
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="#" class="tab"
+                          ><span
+                            ><span>정기배송<em></em></span></span
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tabContentArea active"></div>
+                <div class="tabContentArea"></div>
+                <div class="tabContentArea"></div>
+              </div>
+            </div>
           </div>
-          
-          <div data-v-7f6b5e24="" class="deleteBtnGroup">
-            <button data-v-7f6b5e24="" type="button" class="deleteCartItems"><span data-v-7f6b5e24="">품절상품삭제</span></button>
-            <button data-v-7f6b5e24="" type="button" class="deleteCartItems"><span data-v-7f6b5e24="">선택삭제</span></button>
+          <div class="cartContents">
+            <div class="detailWrap">
+              <div class="itemController">
+                <div class="checkboxController">
+                  <input
+                    id="checkboxController"
+                    type="checkbox"
+                    class="cur_hand"
+                  />
+                  <label for="checkboxController" class="cur_hand"
+                    >전체선택</label
+                  >
+                </div>
+
+                <div class="deleteBtnGroup">
+                  <button
+                    type="button"
+                    class="deleteCartItems"
+                    style="display:none"
+                  >
+                    <span>품절상품삭제</span>
+                  </button>
+                  <button type="button" class="deleteCartItems">
+                    <span>선택삭제</span>
+                  </button>
+                </div>
+              </div>
+              <div class="cartSlideWrapper nonHolidays active">
+                <div class="cartSlideWrapTitle">
+                  <button class="btnToggle"></button>
+                </div>
+                <div aria-expanded="true" class="cartSlideWrap">
+                  <div class="cartSlideInnerCont">
+                    <!-- 배송그룹 컴포넌트 -->
+                    <cart-group
+                      v-for="item in getCartList"
+                      :key="item.trNo"
+                      :groupInfo="item"
+                      v-on:deleteCart="deleteCart2"
+                      @minus="minus2"
+                      @add="add2"
+                    >
+                    </cart-group>
+                  </div>
+                </div>
+              </div>
+              <div id="target-cart-mbox-loc" class="at-element-marker"></div>
+            </div>
+
+            <!-- 금액영역 -->
+            <bill></bill>
           </div>
         </div>
-        <div data-v-7f6b5e24="" class="cartSlideWrapper nonHolidays active">
-          <div data-v-7f6b5e24="" class="cartSlideWrapTitle">
-            <button data-v-7f6b5e24="" class="btnToggle"></button></div>
-            <div data-v-7f6b5e24="" aria-expanded="true" class="cartSlideWrap"><!----><!---->
-            <div data-v-7f6b5e24="" class="cartSlideInnerCont">
-              
-              <!-- 배송그룹 컴포넌트 -->
-              <cart-group 
-                  v-for="item in getCartList" 
-                  :key="item.trNo"
-                  :groupInfo="item">
-              </cart-group>
-                        
-              </div></div></div><div id="target-cart-mbox-loc" class="at-element-marker"></div><!----></div>
-                        
-                <!-- 금액영역 -->
-                <bill></bill>
-
-                </div></div></div></main>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
-import cartGroup from '../components/CartGroup.vue';
-import bill from '../components/Bill.vue';
-import {mapGetters} from 'vuex';
-
+import cartGroup from "../components/CartGroup.vue";
+import bill from "../components/Bill.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'CartView',
+  name: "CartView",
   components: {
     cartGroup,
-    bill
+    bill,
   },
   created() {
-    this.$store.dispatch('FETCH_CART_LIST');
-    // this.refresh();
+    this.refresh();
   },
-  computed :{
+  computed: {
     ...mapGetters({
-        getCartList: 'getCartList',
+      getCartList: "getCartList",
     }),
-    
   },
-  
-}
+  methods: {
+    refresh() {
+      this.$store.dispatch("FETCH_CART_LIST");
+    },
+    deleteCart2(cartSn) {
+      console.log("delete :: ", this);
+      this.$store.dispatch("DELETE_CART", cartSn);
+    },
+    add2(cart) {
+      ++cart.odQty;
+      console.log("add2", cart.odQty);
+      this.updateCart(cart);
+    },
+    minus2(cart) {
+      --cart.odQty;
+      console.log("minus2", cart.odQty);
+      this.updateCart(cart);
+    },
+    updateCart(cart) {
+      let updateTarget = {};
+      updateTarget.cartSn = cart.cartSn;
+      updateTarget.odQty = cart.odQty;
+
+      this.$store.dispatch("UPDATE_CART", cart);
+    },
+  },
+};
 </script>
 
 <style>
-.cartContents[data-v-7f6b5e24] {
-    position: relative;
-    min-height: 390px;
-    margin-top: 40px;
-    margin-bottom: 80px;
+.cartContents {
+  position: relative;
+  min-height: 390px;
+  margin-top: 40px;
+  margin-bottom: 80px;
 }
-.deleteBtnGroup button.deleteCartItems[data-v-7f6b5e24] {
-    float: none;
+.deleteBtnGroup button.deleteCartItems {
+  float: none;
 }
-.deleteBtnGroup[data-v-7f6b5e24] {
-    float: right;
+.deleteBtnGroup {
+  float: right;
 }
-.cartContents .detailWrap[data-v-7f6b5e24] {
-    width: 786px;
+.cartContents .detailWrap {
+  width: 786px;
 }
-.itemController[data-v-7f6b5e24] {
-    float: left;
-    width: 100%;
-    padding: 0 0 12px;
+.itemController {
+  float: left;
+  width: 100%;
+  padding: 0 0 12px;
 }
-.itemController .checkboxController[data-v-7f6b5e24] {
-    float: left;
-    font-size: 0;
-    line-height: 32px;
-    letter-spacing: -.3px;
-    color: #333;
+.itemController .checkboxController {
+  float: left;
+  font-size: 0;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: #333;
 }
-.itemController .checkboxController input[type=checkbox][data-v-7f6b5e24] {
-    margin-right: 10px;
-    vertical-align: middle;
+.itemController .checkboxController input[type="checkbox"] {
+  margin-right: 10px;
+  vertical-align: middle;
 }
-.itemController .checkboxController label[data-v-7f6b5e24] {
-    display: inline-block;
-    padding-left: 0;
-    font-size: 14px;
-    line-height: 32px;
+.itemController .checkboxController label {
+  display: inline-block;
+  padding-left: 0;
+  font-size: 14px;
+  line-height: 32px;
 }
-#sideArea.cartPriceWing[data-v-7f6b5e24] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 298px;
-    height: 100%;
-    z-index: 5;
+#sideArea.cartPriceWing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 298px;
+  height: 100%;
+  z-index: 5;
 }
-#sideArea.cartPriceWing .priceWrap[data-v-7f6b5e24] {
-    width: 298px;
+#sideArea.cartPriceWing .priceWrap {
+  width: 298px;
 }
-#sideArea.cartPriceWing .priceWrap .inner[data-v-7f6b5e24] {
-    width: 100%;
-    background: #fff;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 24px 20px 20px 20px;
+#sideArea.cartPriceWing .priceWrap .inner {
+  width: 100%;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 24px 20px 20px 20px;
 }
-#sideArea.cartPriceWing .priceWrap .priceTitle[data-v-7f6b5e24] {
-    font-size: 20px;
-    line-height: 1.4;
-    letter-spacing: -.06em;
-    margin-bottom: 28px;
+#sideArea.cartPriceWing .priceWrap .priceTitle {
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.06em;
+  margin-bottom: 28px;
 }
-#sideArea.cartPriceWing .priceWrap .priceList[data-v-7f6b5e24] {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 18px;
+#sideArea.cartPriceWing .priceWrap .priceList {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 18px;
 }
-#sideArea.cartPriceWing .priceWrap .totalPrice[data-v-7f6b5e24] {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 17px;
+#sideArea.cartPriceWing .priceWrap .totalPrice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 17px;
 }
-#sideArea.cartPriceWing .priceWrap ul.cartBtnSet[data-v-7f6b5e24] {
-    margin: 30px -7px -6px -7px;
+#sideArea.cartPriceWing .priceWrap ul.cartBtnSet {
+  margin: 30px -7px -6px -7px;
 }
-.itemController button.deleteCartItems[data-v-7f6b5e24] {
-    float: right;
-    height: 32px;
-    padding: 0 12px;
-    margin-left: 8px;
-    font-size: 13px;
-    line-height: 32px;
-    letter-spacing: -.2px;
-    text-align: center;
-    color: #333;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+.itemController button.deleteCartItems {
+  float: right;
+  height: 32px;
+  padding: 0 12px;
+  margin-left: 8px;
+  font-size: 13px;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #333;
+  border-radius: 6px;
+  border: 1px solid #ddd;
 }
-.cartListWrapper[data-v-7f6b5e24] {
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    overflow: hidden;
+.cartListWrapper {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
 }
-.cartListWrapper .cartHeader[data-v-7f6b5e24] {
-    height: 53px;
-    padding: 0 20px 0 19px;
-    border-bottom: 1px solid #eee;
+.cartListWrapper .cartHeader {
+  height: 53px;
+  padding: 0 20px 0 19px;
+  border-bottom: 1px solid #eee;
 }
-.cartListWrapper[data-v-7f6b5e24] {
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    overflow: hidden;
+.cartListWrapper {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
 }
-.cartListWrapper>ul[data-v-7f6b5e24] {
-    display: inline-block;
-    width: 100%;
+.cartListWrapper > ul {
+  display: inline-block;
+  width: 100%;
 }
-.cartListWrapper>ul>li[data-v-7f6b5e24]:first-child {
-    border-top: none;
+.cartListWrapper > ul > li:first-child {
+  border-top: none;
 }
-.cartListWrapper>ul>li[data-v-7f6b5e24] {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    padding: 24px 10px 24px 20px;
-    border-top: 1px solid #eee;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+.cartListWrapper > ul > li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 24px 10px 24px 20px;
+  border-top: 1px solid #eee;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
-.cartListWrapper .hasCheckbox[data-v-7f6b5e24] {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: relative;
-    padding-left: 28px;
+.cartListWrapper .hasCheckbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  padding-left: 28px;
 }
-.cartListWrapper .cartQty[data-v-7f6b5e24] {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    min-width: 140px;
-    padding-right: 20px;
-    padding-left: 20px;
+.cartListWrapper .cartQty {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 140px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
-.cartListWrapper .cartAction[data-v-7f6b5e24] {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding: 0 24px;
-    min-width: 166px;
-    text-align: right;
+.cartListWrapper .cartAction {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 0 24px;
+  min-width: 166px;
+  text-align: right;
 }
-.cartListWrapper .cartAction a[data-v-7f6b5e24]:only-child, .cartListWrapper .cartAction button[data-v-7f6b5e24]:not(.deleteItem):only-child {
-    margin-right: -3px;
-    margin-left: -4px;
+.cartListWrapper .cartAction a:only-child,
+.cartListWrapper .cartAction button:not(.deleteItem):only-child {
+  margin-right: -3px;
+  margin-left: -4px;
 }
-[data-v-7f6b5e24] .productItem .productThumb {
-    height: 80px;
+.productItem .productThumb {
+  height: 80px;
 }
-.productItem[data-v-7f6b5e24] {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.productItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.productItem .productData .productTitle[data-v-7f6b5e24] {
-    margin-bottom: 5px;
-    font-size: 15px;
-    line-height: 1.47;
-    letter-spacing: -.3px;
-    color: #333;
+.productItem .productData .productTitle {
+  margin-bottom: 5px;
+  font-size: 15px;
+  line-height: 1.47;
+  letter-spacing: -0.3px;
+  color: #333;
 }
-.productItem .productThumb .productStatus[data-v-7f6b5e24] {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-size: 12px;
-    line-height: 24px;
-    letter-spacing: -.2px;
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0,0,0,.6);
-    z-index: 5;
+.productItem .productThumb .productStatus {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
 }
 .productItem .productThumb a {
-    width: 80px;
-    height: 80px;
-    background: #e5e5e5;
+  width: 80px;
+  height: 80px;
+  background: #e5e5e5;
 }
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
-    margin: 0;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    widows: 1;
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  widows: 1;
 }
-.cartListWrapper .cartHeader .checkboxSet input[type=checkbox]+label[data-v-7f6b5e24], .cartListWrapper .cartHeader h3[data-v-7f6b5e24] {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 53px;
-    letter-spacing: -.5px;
-    color: #333;
-    vertical-align: middle;
+.cartListWrapper .cartHeader .checkboxSet input[type="checkbox"] + label,
+.cartListWrapper .cartHeader h3 {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 53px;
+  letter-spacing: -0.5px;
+  color: #333;
+  vertical-align: middle;
 }
-.cartListWrapper .cartHeader .checkboxSet input[type=checkbox][data-v-7f6b5e24]:checked {
-    border: 0;
-    background: #ef2a23 url(//static.lotteon.com/p/order/assets/img/checkbox_on.svg) no-repeat;
-    background-size: 100%;
+.cartListWrapper .cartHeader .checkboxSet input[type="checkbox"]:checked {
+  border: 0;
+  background: #ef2a23
+    url(//static.lotteon.com/p/order/assets/img/checkbox_on.svg) no-repeat;
+  background-size: 100%;
 }
-.checkboxSet, .radioSet {
-    display: inline-block;
-    float: left;
+.checkboxSet,
+.radioSet {
+  display: inline-block;
+  float: left;
 }
-.cartListWrapper .cartFooter[data-v-7f6b5e24] {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 48px;
-    padding: 0 20px;
-    font-size: 13px;
-    line-height: 48px;
-    letter-spacing: .2px;
-    color: #757575;
-    border-top: 1px solid #eee;
-    background-color: #fef5f4;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.cartListWrapper .cartFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 48px;
+  padding: 0 20px;
+  font-size: 13px;
+  line-height: 48px;
+  letter-spacing: 0.2px;
+  color: #757575;
+  border-top: 1px solid #eee;
+  background-color: #fef5f4;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
-#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnOrder[data-v-7f6b5e24] {
-    display: block;
-    line-height: 52px;
-    text-align: center;
-    font-size: 18px;
-    background: #ef2a23;
-    color: #fff;
-    border-radius: 6px;
+#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnOrder {
+  display: block;
+  line-height: 52px;
+  text-align: center;
+  font-size: 18px;
+  background: #ef2a23;
+  color: #fff;
+  border-radius: 6px;
 }
-#sideArea.cartPriceWing .priceWrap .priceList dl dt[data-v-7f6b5e24] {
-    position: relative;
-    width: 50%;
-    display: table-cell;
-    padding-top: 3px;
-    font-size: 14px;
-    color: #757575;
-    line-height: 1.57;
-    letter-spacing: -.3px;
-    vertical-align: top;
-    white-space: normal;
+#sideArea.cartPriceWing .priceWrap .priceList dl dt {
+  position: relative;
+  width: 50%;
+  display: table-cell;
+  padding-top: 3px;
+  font-size: 14px;
+  color: #757575;
+  line-height: 1.57;
+  letter-spacing: -0.3px;
+  vertical-align: top;
+  white-space: normal;
 }
-#sideArea.cartPriceWing .priceWrap .priceTitle[data-v-7f6b5e24] {
-    font-size: 20px;
-    line-height: 1.4;
-    letter-spacing: -.06em;
-    margin-bottom: 28px;
+#sideArea.cartPriceWing .priceWrap .priceTitle {
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.06em;
+  margin-bottom: 28px;
 }
-#sideArea.cartPriceWing .priceWrap .totalPrice dd .price[data-v-7f6b5e24] {
-    font-size: 28px;
-    font-weight: 700;
+#sideArea.cartPriceWing .priceWrap .totalPrice dd .price {
+  font-size: 28px;
+  font-weight: 700;
 }
-#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnGift[data-v-7f6b5e24] {
-    display: block;
-    line-height: 34px;
-    text-align: center;
-    font-size: 13px;
-    background: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+#sideArea.cartPriceWing .priceWrap ul.cartBtnSet li .btnGift {
+  display: block;
+  line-height: 34px;
+  text-align: center;
+  font-size: 13px;
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
-#sideArea.cartPriceWing .priceWrap .priceTitle[data-v-7f6b5e24] {
-    font-size: 20px;
-    line-height: 1.4;
-    letter-spacing: -.06em;
-    margin-bottom: 28px;
+#sideArea.cartPriceWing .priceWrap .priceTitle {
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.06em;
+  margin-bottom: 28px;
+}
+.cartListWrapper .cartPrice {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 166px;
+  text-align: center;
+}
+.cartListWrapper .cartQty {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 140px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.cartListWrapper > ul > li button.deleteItem {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+  background-image: url(//static.lotteon.com/p/order/assets/img/icon_delete-item_new.svg);
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+#sideArea.cartPriceWing .priceWrap .priceList dl dt {
+  position: relative;
+  width: 50%;
+  display: table-cell;
+  padding-top: 3px;
+  font-size: 14px;
+  color: #757575;
+  line-height: 1.57;
+  letter-spacing: -0.3px;
+  vertical-align: top;
+  white-space: normal;
+  text-align: left;
 }
 </style>

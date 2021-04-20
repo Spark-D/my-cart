@@ -39,7 +39,8 @@
               }}</strong>
               {{ cartItemInfo.product[0].spdNm }} <br />[{{
                 cartItemInfo.cartSn
-              }}]
+              }}]<br />
+              [{{ cartItemInfo.product[0].trNo }}]
             </p></a
           >
           <div class="productOption">

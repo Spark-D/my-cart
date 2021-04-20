@@ -10,7 +10,9 @@
             <dt data-v-7f6b5e24="">
               상품금액
             </dt>
-            <dd data-v-7f6b5e24="">0<span data-v-7f6b5e24="">원</span></dd>
+            <dd data-v-7f6b5e24="">
+              {{ prodPrice }}<span data-v-7f6b5e24="">원</span>
+            </dd>
           </dl>
           <dl data-v-7f6b5e24="">
             <dt data-v-7f6b5e24="">배송비</dt>
@@ -30,11 +32,14 @@
         <dl data-v-7f6b5e24="" class="totalPrice">
           <dt data-v-7f6b5e24="">
             총
-            <span data-v-7f6b5e24="" class="colorPrimary">0</span>건
+            <span data-v-7f6b5e24="" class="colorPrimary">{{ prodCnt }}</span
+            >건
           </dt>
           <dd data-v-7f6b5e24="" class="price">
             <!---->
-            <strong data-v-7f6b5e24="" class="price colorPrimary">0</strong>
+            <strong data-v-7f6b5e24="" class="price colorPrimary">{{
+              prodPrice
+            }}</strong>
             <span data-v-7f6b5e24="" class="won colorPrimary">원</span>
           </dd>
         </dl>
@@ -59,7 +64,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Bill",
+  props: {
+    prodList: {
+      type: Array,
+      defaultValue: [],
+    },
+  },
+  computed: {
+    prodPrice() {
+      let price = 0;
+      for (let p of this.prodList) {
+        price += p.slPrc * p.qty;
+      }
+      return price;
+    },
+    prodCnt() {
+      return this.prodList.length;
+    },
+  },
+  // methods: {},
+};
 </script>
 
 <style>

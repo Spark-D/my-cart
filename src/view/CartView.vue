@@ -112,7 +112,7 @@
             </div>
 
             <!-- 금액영역 -->
-            <bill></bill>
+            <bill :prodList="getCartProdList"></bill>
           </div>
         </div>
       </div>
@@ -137,6 +137,7 @@ export default {
   computed: {
     ...mapGetters({
       getCartList: "getCartList",
+      getCartProdList: "getCartProdList",
     }),
   },
   methods: {
@@ -146,6 +147,7 @@ export default {
     deleteCart2(cartSn) {
       console.log("delete :: ", this);
       this.$store.dispatch("DELETE_CART", cartSn);
+      this.$nextTick();
     },
     add2(cart) {
       ++cart.odQty;

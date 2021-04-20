@@ -18,7 +18,8 @@ export const store = new Vuex.Store({
     productListInfo: {},
     cartList: [],
     insertResult: {},
-    deleteResult: {},
+    cartProducts: [],
+    // deleteResult: {},
   },
   getters: {
     // computed랑 같은데 store에 있는것
@@ -31,9 +32,12 @@ export const store = new Vuex.Store({
     insertCart(state) {
       return state.insertResult;
     },
-    deleteCartItem(state) {
-      state.deleteResult;
+    getCartProdList(state) {
+      return state.cartProducts;
     },
+    // deleteCartItem(state) {
+    //   return state.deleteResult;
+    // },
   },
   mutations: {
     SET_PRODUCT_LIST(state, data) {
@@ -47,6 +51,9 @@ export const store = new Vuex.Store({
     },
     SET_DELETE_CART_RESULT(state, data) {
       state.deleteResult = data;
+    },
+    SET_CART_PROD_LIST(state, data) {
+      state.cartProducts = data;
     },
   },
   actions: {
@@ -62,8 +69,26 @@ export const store = new Vuex.Store({
     FETCH_CART_LIST(context) {
       getCartList()
         .then((response) => {
-          console.log(response.data);
+          console.log("store>>", response.data);
           context.commit("SET_CART_LIST", response.data);
+          let cartList = [];
+          for (let c of response.data) {
+            cartList.push(...c.omCartList);
+          }
+          // console.log("cartList", cartList);
+          let prodList = [];
+          for (let c of cartList) {
+            prodList.push(...c.product);
+          }
+          for (let cart of cartList) {
+            for (let prd of prodList) {
+              if (prd.trNo == cart.trNo && prd.stimNo == cart.stimNo) {
+                prd.qty = cart.odQty;
+              }
+            }
+          }
+          context.commit("SET_CART_PROD_LIST", prodList);
+          //reduce(a => a[0].omCartList)
         })
         .catch((error) => {
           console.log(error);
@@ -87,6 +112,7 @@ export const store = new Vuex.Store({
           console.log(response);
           if (response.status === 200) {
             alert("삭제되었습니다.");
+            this.dispatch("FETCH_CART_LIST");
           }
         })
         .catch((error) => {
@@ -97,6 +123,7 @@ export const store = new Vuex.Store({
       updateCartItem(data)
         .then((response) => {
           console.log(response);
+          this.dispatch("FETCH_CART_LIST");
         })
         .catch((error) => {
           console.log(error);

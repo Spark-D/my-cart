@@ -61,15 +61,15 @@ export default {
   },
   methods: {
     test2(cartSn) {
-      console.log("group comp");
+      // console.log("group comp");
       this.$emit("deleteCart", cartSn);
     },
     minus(cart) {
-      console.log("minus1", cart.odQty);
+      // console.log("minus1", cart.odQty);
       this.$emit("minus", cart);
     },
     add(cart) {
-      console.log("add1", cart.odQty);
+      // console.log("add1", cart.odQty);
       this.$emit("add", cart);
     },
   },
@@ -77,7 +77,7 @@ export default {
     total() {
       const arr = this.groupInfo.omCartList;
       let total = 0;
-      console.log(...arr);
+      // console.log(...arr);
       for (const p in arr) {
         // console.log("P >", arr[p].odQty);
         total += arr[p].product[0].slPrc * arr[p].odQty;

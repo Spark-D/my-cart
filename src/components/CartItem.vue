@@ -46,9 +46,9 @@
           <div class="productOption">
             <span class="original">단일상품</span>
             <ul></ul>
-            <button class="moreView">
+            <!-- <button class="moreView">
               옵션 더 보기
-            </button>
+            </button> -->
           </div>
           <p class="productDeliveryInfo">
             {{ cartItemInfo.product[0].estmtDlvTxt }}
@@ -190,11 +190,14 @@ export default {
   },
   methods: {
     deleteCart(cartSn) {
-      //   console.log("hey, ", this.$el);
       this.$emit("test", cartSn);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+li {
+  text-align: -webkit-match-parent;
+}
+</style>

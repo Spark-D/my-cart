@@ -124,6 +124,7 @@
 import cartGroup from "../components/CartGroup.vue";
 import bill from "../components/Bill.vue";
 import { mapGetters } from "vuex";
+import _ from "lodash";
 
 export default {
   name: "CartView",
@@ -145,27 +146,31 @@ export default {
       this.$store.dispatch("FETCH_CART_LIST");
     },
     deleteCart2(cartSn) {
-      console.log("delete :: ", this);
+      // console.log("delete :: ", this);
       this.$store.dispatch("DELETE_CART", cartSn);
       this.$nextTick();
     },
     add2(cart) {
       ++cart.odQty;
-      console.log("add2", cart.odQty);
+      // console.log("add2", cart.odQty);
       this.updateCart(cart);
     },
     minus2(cart) {
       --cart.odQty;
-      console.log("minus2", cart.odQty);
+      // console.log("minus2", cart.odQty);
       this.updateCart(cart);
     },
-    updateCart(cart) {
+    updateCart2(cart) {
+      console.log("debounce", cart.odQty);
       let updateTarget = {};
       updateTarget.cartSn = cart.cartSn;
       updateTarget.odQty = cart.odQty;
 
       this.$store.dispatch("UPDATE_CART", cart);
     },
+    updateCart: _.debounce(function(cart) {
+      this.updateCart2(cart);
+    }, 500),
   },
 };
 </script>
@@ -611,6 +616,26 @@ input[type="submit"] {
   letter-spacing: -0.3px;
   vertical-align: top;
   white-space: normal;
-  text-align: left;
+  /* text-align: left; */
+}
+.productItem .productData .productDeliveryInfo {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.57;
+  letter-spacing: -0.3px;
+  color: #4185ed;
+}
+.productItem .productData .productOption {
+  font-size: 14px;
+  line-height: 1.57;
+  letter-spacing: -0.3px;
+  color: #757575;
+}
+.productItem .productData .productTitle {
+  margin-bottom: 5px;
+  font-size: 15px;
+  line-height: 1.47;
+  letter-spacing: -0.3px;
+  color: #333;
 }
 </style>

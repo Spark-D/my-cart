@@ -69,21 +69,26 @@ export const store = new Vuex.Store({
     FETCH_CART_LIST(context) {
       getCartList()
         .then((response) => {
-          console.log("store>>", response.data);
+          // console.log("store>>", response.data);
           context.commit("SET_CART_LIST", response.data);
           let cartList = [];
           for (let c of response.data) {
             cartList.push(...c.omCartList);
           }
-          // console.log("cartList", cartList);
+          console.log("cartList", cartList);
           let prodList = [];
           for (let c of cartList) {
             prodList.push(...c.product);
           }
-          for (let cart of cartList) {
-            for (let prd of prodList) {
+          console.log("productList", prodList);
+
+          // console.log("cart >>>", cart.odQty);
+          for (let prd of prodList) {
+            for (let cart of cartList) {
               if (prd.trNo == cart.trNo && prd.stimNo == cart.stimNo) {
                 prd.qty = cart.odQty;
+                // console.log("prd qty>>>", prd.brdNm, prd.qty);
+                //break;
               }
             }
           }

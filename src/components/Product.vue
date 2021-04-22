@@ -7,7 +7,6 @@
     data-spd-no="LE1318220724"
     data-sitm-no="LE1206646154_1236299893"
   >
-    <!---->
     <div data-v-867a9d34="" class="item">
       <div data-v-867a9d34="" class="thumb">
         <a
@@ -35,8 +34,7 @@
           class="icon heart2 moduleWish sizeMini alignLeft wishWhite off"
           @click="insertCart(productInfo)"
         >
-          <span data-v-48f42559="" class="inner"
-            ><!---->
+          <span data-v-48f42559="" class="inner">
             <div
               data-v-29682b0a=""
               class="lottieObject"
@@ -92,8 +90,7 @@
                 </g>
               </svg>
             </div>
-            <span data-v-48f42559="" class="pickText">찜</span
-            ><!----></span
+            <span data-v-48f42559="" class="pickText">찜</span></span
           >
         </button>
       </div>
@@ -102,7 +99,6 @@
         href="//www.lotteon.com/p/product/bundle/LE1318220724?dp_infw_cd=CAT22276"
         class="block"
         ><div data-v-867a9d34="" class="info flag">
-          <!---->
           <ul data-v-867a9d34="" class="flagArea">
             <li class="flag blue">무료배송</li>
           </ul>
@@ -120,27 +116,26 @@
             <div data-v-867a9d34="">
               <span data-v-867a9d34="" class="sale">15%</span>
               <span data-v-867a9d34="" class="real"
-                >{{ productInfo.slPrc }}<em data-v-867a9d34="">원</em></span
+                >{{ setComma(productInfo.slPrc)
+                }}<em data-v-867a9d34="">원</em></span
               >
             </div>
             <div data-v-867a9d34="">
               <strong data-v-867a9d34="" class="final"
-                >{{ productInfo.scndFvrPrc
-                }}<span data-v-867a9d34=""> 원<!----></span></strong
-              ><!---->
+                >{{ setComma(productInfo.scndFvrPrc)
+                }}<span data-v-867a9d34=""> 원</span></strong
+              >
             </div>
-            <div data-v-867a9d34=""><!----><!----></div>
-          </div>
-          <!----><!----><!----><!----><!----><!----><!---->
-        </div></a
-      ><!----><!----><!---->
+            <div data-v-867a9d34=""></div>
+          </div></div
+      ></a>
     </div>
-    <!---->
   </li>
 </template>
 
 <script>
 import { eventBus } from "../main.js";
+import { computedMixin } from "../mixins/index.js";
 
 export default {
   name: "product",
@@ -150,6 +145,7 @@ export default {
       defaultValue: {},
     },
   },
+  mixins: [computedMixin], // computedMixin의 모든 속성이 현재 컴포넌트에 혼합된다.
   methods: {
     insertCart: (productInfo) => {
       eventBus.$emit("insertCart", productInfo);

@@ -11,7 +11,7 @@
               상품금액
             </dt>
             <dd data-v-7f6b5e24="">
-              {{ prodPrice }}<span data-v-7f6b5e24="">원</span>
+              {{ setComma(prodPrice) }}<span data-v-7f6b5e24="">원</span>
             </dd>
           </dl>
           <dl data-v-7f6b5e24="">
@@ -38,7 +38,7 @@
           <dd data-v-7f6b5e24="" class="price">
             <!---->
             <strong data-v-7f6b5e24="" class="price colorPrimary">{{
-              prodPrice
+              setComma(prodPrice)
             }}</strong>
             <span data-v-7f6b5e24="" class="won colorPrimary">원</span>
           </dd>
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { computedMixin } from "../mixins/index.js";
 export default {
   name: "Bill",
   props: {
@@ -72,6 +73,7 @@ export default {
       defaultValue: [],
     },
   },
+  mixins: [computedMixin],
   computed: {
     prodPrice() {
       let price = 0;

@@ -140,7 +140,7 @@
             class="s_loading"/></span
         ><strong>{{
           cartItemInfo.product[0].slPrc
-            ? cartItemInfo.product[0].slPrc * cartItemInfo.odQty
+            ? setComma(cartItemInfo.product[0].slPrc * cartItemInfo.odQty)
             : 0
         }}</strong
         >원
@@ -179,7 +179,7 @@
 </template>
 
 <script>
-// import { eventBus } from "../main.js";
+import { computedMixin } from "../mixins/index.js";
 export default {
   name: "CartItem",
   props: {
@@ -188,6 +188,7 @@ export default {
       defaultValue: {},
     },
   },
+  mixins: [computedMixin],
   methods: {
     deleteCart(cartSn) {
       this.$emit("test", cartSn);

@@ -169,7 +169,12 @@
           <div data-v-867a9d34="" data-v-56d83c02="" class="productList">
             <!---->
             <div data-v-867a9d34="" class="scroll-wrap dataItem item5">
-              <div data-v-867a9d34="" class="list-wrap">
+              <div
+                data-v-867a9d34=""
+                class="list-wrap"
+                v-bind:class="{ displayNone: isLoading }"
+                v-lazy-container="{ selector: 'img' }"
+              >
                 <ul data-v-867a9d34="">
                   <product
                     v-for="item in getProdList.dataList"
@@ -227,6 +232,7 @@ export default {
     return {
       // productList: [],
       pageNo: 1,
+      isLoading: false,
       // totalPageCnt : 1
     };
   },
@@ -243,8 +249,6 @@ export default {
       console.log(pageNo);
       this.pageNo = pageNo;
       this.refresh();
-
-      // this.refresh();
     },
   },
   computed: {

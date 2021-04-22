@@ -32,9 +32,9 @@ export const store = new Vuex.Store({
     insertCart(state) {
       return state.insertResult;
     },
-    getCartProdList(state) {
-      return state.cartProducts;
-    },
+    // getCartProdList(state) {
+    //   return state.cartProducts;
+    // },
     // deleteCartItem(state) {
     //   return state.deleteResult;
     // },
@@ -71,29 +71,6 @@ export const store = new Vuex.Store({
         .then((response) => {
           // console.log("store>>", response.data);
           context.commit("SET_CART_LIST", response.data);
-          let cartList = [];
-          for (let c of response.data) {
-            cartList.push(...c.omCartList);
-          }
-          console.log("cartList", cartList);
-          let prodList = [];
-          for (let c of cartList) {
-            prodList.push(...c.product);
-          }
-          console.log("productList", prodList);
-
-          // console.log("cart >>>", cart.odQty);
-          for (let prd of prodList) {
-            for (let cart of cartList) {
-              if (prd.trNo == cart.trNo && prd.stimNo == cart.stimNo) {
-                prd.qty = cart.odQty;
-                // console.log("prd qty>>>", prd.brdNm, prd.qty);
-                //break;
-              }
-            }
-          }
-          context.commit("SET_CART_PROD_LIST", prodList);
-          //reduce(a => a[0].omCartList)
         })
         .catch((error) => {
           console.log(error);
@@ -126,8 +103,11 @@ export const store = new Vuex.Store({
     },
     UPDATE_CART(context, data) {
       updateCartItem(data)
-        .then((response) => {
-          console.log(response);
+        // .then((response) => {
+        //   console.log(response);
+        //   this.dispatch("FETCH_CART_LIST");
+        // })
+        .then(() => {
           this.dispatch("FETCH_CART_LIST");
         })
         .catch((error) => {

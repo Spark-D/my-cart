@@ -112,7 +112,7 @@
             </div>
 
             <!-- 금액영역 -->
-            <bill :prodList="getCartProdList"></bill>
+            <bill :prodList="onlyProductList"></bill>
           </div>
         </div>
       </div>
@@ -138,26 +138,47 @@ export default {
   computed: {
     ...mapGetters({
       getCartList: "getCartList",
-      getCartProdList: "getCartProdList",
     }),
+    onlyProductList() {
+      let cartList = [];
+      for (let c of this.getCartList) {
+        cartList.push(...c.omCartList);
+      }
+      let prodList = [];
+      for (let c of cartList) {
+        prodList.push(...c.product);
+      }
+      for (let c of cartList) {
+        for (let p of prodList) {
+          if (
+            c.spdNo === p.spdNo &&
+            c.trNo === p.trNo &&
+            c.stimNo === p.stimNo
+          ) {
+            p.qty = c.odQty;
+          }
+        }
+      }
+      for (let c of prodList) {
+        console.log(c.spdNo, c.qty);
+      }
+      return prodList;
+    },
   },
   methods: {
     refresh() {
       this.$store.dispatch("FETCH_CART_LIST");
     },
     deleteCart2(cartSn) {
-      // console.log("delete :: ", this);
       this.$store.dispatch("DELETE_CART", cartSn);
-      this.$nextTick();
+      this.refresh();
     },
     add2(cart) {
       ++cart.odQty;
-      // console.log("add2", cart.odQty);
       this.updateCart(cart);
     },
     minus2(cart) {
       --cart.odQty;
-      // console.log("minus2", cart.odQty);
       this.updateCart(cart);
     },
     updateCart2(cart) {

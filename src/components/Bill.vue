@@ -84,7 +84,6 @@ export default {
       return this.prodList.length;
     },
   },
-  // methods: {},
 };
 </script>
 

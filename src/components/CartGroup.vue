@@ -34,9 +34,9 @@
     <!----><!---->
     <div data-v-7f6b5e24="" class="cartFooter">
       <p data-v-7f6b5e24="">
-        {{ total }}원 + 배송비 0원 - 할인 0원 =
+        {{ setComma(total) }}원 + 배송비 0원 - 할인 0원 =
         <span data-v-7f6b5e24="" class="price"
-          ><strong data-v-7f6b5e24="">{{ total }}</strong
+          ><strong data-v-7f6b5e24="">{{ setComma(total) }}</strong
           >원</span
         ><!---->
       </p>
@@ -48,6 +48,7 @@
 
 <script>
 import cartItem from "../components/CartItem.vue";
+import { computedMixin } from "../mixins/index.js";
 export default {
   name: "CartGroup",
   components: {
@@ -59,17 +60,15 @@ export default {
       defaultValue: {},
     },
   },
+  mixins: [computedMixin],
   methods: {
     test2(cartSn) {
-      // console.log("group comp");
       this.$emit("deleteCart", cartSn);
     },
     minus(cart) {
-      // console.log("minus1", cart.odQty);
       this.$emit("minus", cart);
     },
     add(cart) {
-      // console.log("add1", cart.odQty);
       this.$emit("add", cart);
     },
   },
@@ -79,7 +78,6 @@ export default {
       let total = 0;
       // console.log(...arr);
       for (const p in arr) {
-        // console.log("P >", arr[p].odQty);
         total += arr[p].product[0].slPrc * arr[p].odQty;
       }
       return total;

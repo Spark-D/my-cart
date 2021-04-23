@@ -14,11 +14,9 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   EventBus: EventBus,
   state: {
-    // pageNo: 1,
     productListInfo: {},
     cartList: [],
     insertResult: {},
-    cartProducts: [],
     // deleteResult: {},
   },
   getters: {
@@ -32,12 +30,6 @@ export const store = new Vuex.Store({
     insertCart(state) {
       return state.insertResult;
     },
-    // getCartProdList(state) {
-    //   return state.cartProducts;
-    // },
-    // deleteCartItem(state) {
-    //   return state.deleteResult;
-    // },
   },
   mutations: {
     SET_PRODUCT_LIST(state, data) {
@@ -51,9 +43,6 @@ export const store = new Vuex.Store({
     },
     SET_DELETE_CART_RESULT(state, data) {
       state.deleteResult = data;
-    },
-    SET_CART_PROD_LIST(state, data) {
-      state.cartProducts = data;
     },
   },
   actions: {

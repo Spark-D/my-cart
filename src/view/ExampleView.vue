@@ -1,7 +1,8 @@
 <template>
   <div>
     <button @click="clickTest">click</button><br /><br />
-    <button @click="debounceTest">debounce click</button>
+    <button @click="debounceTest">debounce click</button><br /><br />
+    <button @click="throttleTest">throttle click</button>
   </div>
 </template>
 
@@ -16,7 +17,10 @@ export default {
     },
     debounceTest: _.debounce(function() {
       console.log("debounce");
-    }, 500),
+    }, 10000),
+    throttleTest: _.throttle(function() {
+      console.log("throttle");
+    }, 10000),
   },
 };
 </script>

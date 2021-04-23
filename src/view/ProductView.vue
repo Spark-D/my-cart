@@ -260,7 +260,7 @@ export default {
   mounted() {
     eventBus.$on("insertCart", (productInfo) => {
       let omCart = {
-        mbNo: "1",
+        // mbNo: "1",
         trNo: productInfo.trNo,
         lrtrNo: productInfo.lrtrNo,
         spdNo: productInfo.spdNo,

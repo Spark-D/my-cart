@@ -1,60 +1,48 @@
 <template>
-  <div data-v-7f6b5e24="" id="sideArea" class="cartPriceWing">
-    <div data-v-7f6b5e24="" class="priceWrap vue-affix affix-top">
-      <div data-v-7f6b5e24="" class="inner">
-        <div data-v-7f6b5e24="" class="priceTitle">
+  <div id="sideArea" class="cartPriceWing">
+    <div class="priceWrap vue-affix affix-top">
+      <div class="inner">
+        <div class="priceTitle">
           결제예정금액
         </div>
-        <div data-v-7f6b5e24="" class="priceList">
-          <dl data-v-7f6b5e24="">
-            <dt data-v-7f6b5e24="">
+        <div class="priceList">
+          <dl>
+            <dt>
               상품금액
             </dt>
-            <dd data-v-7f6b5e24="">
-              {{ setComma(prodPrice) }}<span data-v-7f6b5e24="">원</span>
-            </dd>
+            <dd>{{ setComma(prodPrice) }}<span>원</span></dd>
           </dl>
-          <dl data-v-7f6b5e24="">
-            <dt data-v-7f6b5e24="">배송비</dt>
-            <dd data-v-7f6b5e24="">
-              <!---->0<span data-v-7f6b5e24="">원</span>
-            </dd>
+          <dl>
+            <dt>배송비</dt>
+            <dd><!---->0<span>원</span></dd>
           </dl>
-          <dl data-v-7f6b5e24="">
-            <dt data-v-7f6b5e24="">
+          <dl>
+            <dt>
               상품할인금액
             </dt>
-            <dd data-v-7f6b5e24="">
-              <!----><!---->0<span data-v-7f6b5e24="">원</span>
-            </dd>
+            <dd><!----><!---->0<span>원</span></dd>
           </dl>
         </div>
-        <dl data-v-7f6b5e24="" class="totalPrice">
-          <dt data-v-7f6b5e24="">
+        <dl class="totalPrice">
+          <dt>
             총
-            <span data-v-7f6b5e24="" class="colorPrimary">{{ prodCnt }}</span
+            <span class="colorPrimary">{{ prodCnt }}</span
             >건
           </dt>
-          <dd data-v-7f6b5e24="" class="price">
+          <dd class="price">
             <!---->
-            <strong data-v-7f6b5e24="" class="price colorPrimary">{{
+            <strong class="price colorPrimary">{{
               setComma(prodPrice)
             }}</strong>
-            <span data-v-7f6b5e24="" class="won colorPrimary">원</span>
+            <span class="won colorPrimary">원</span>
           </dd>
         </dl>
-        <ul data-v-7f6b5e24="" class="cartBtnSet">
-          <li data-v-7f6b5e24="">
-            <a data-v-7f6b5e24="" href="#none" class="btnOrder">주문하기</a>
+        <ul class="cartBtnSet">
+          <li>
+            <a href="#none" class="btnOrder">주문하기</a>
           </li>
-          <li data-v-7f6b5e24="">
-            <a
-              data-v-7f6b5e24=""
-              href="#none"
-              class="btnGift"
-              style="display:none"
-              >선물하기</a
-            >
+          <li>
+            <a href="#none" class="btnGift" style="display:none">선물하기</a>
           </li>
         </ul>
         <!---->
@@ -183,5 +171,46 @@ video {
   vertical-align: baseline;
   widows: 1;
   text-align: -webkit-left;
+}
+#sideArea.cartPriceWing .priceWrap .totalPrice dd {
+  text-align: right;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+#sideArea.cartPriceWing .priceWrap .priceList dl dt {
+  position: relative;
+  width: 50%;
+  display: table-cell;
+  padding-top: 3px;
+  font-size: 14px;
+  color: #757575;
+  line-height: 1.57;
+  letter-spacing: -0.3px;
+  vertical-align: top;
+  white-space: normal;
+}
+#sideArea.cartPriceWing .priceWrap .priceList dl {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: normal;
+}
+#sideArea.cartPriceWing .priceWrap .priceList dl dd {
+  font-size: 16px;
+  width: 50%;
+  display: table-cell;
+  position: relative;
+  text-align: right;
+  font-weight: 700;
+  word-break: break-all;
+  vertical-align: top;
+  line-height: 1.57;
+}
+#sideArea.cartPriceWing .priceWrap .priceList {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 18px;
 }
 </style>

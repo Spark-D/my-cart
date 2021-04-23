@@ -159,9 +159,6 @@ export default {
           }
         }
       }
-      for (let c of prodList) {
-        console.log(c.spdNo, c.qty);
-      }
       return prodList;
     },
   },
@@ -179,10 +176,9 @@ export default {
     },
     minus2(cart) {
       --cart.odQty;
-      this.updateCart(cart);
+      this.throttlCart(cart);
     },
     updateCart2(cart) {
-      console.log("debounce", cart.odQty);
       let updateTarget = {};
       updateTarget.cartSn = cart.cartSn;
       updateTarget.odQty = cart.odQty;
@@ -191,12 +187,26 @@ export default {
     },
     updateCart: _.debounce(function(cart) {
       this.updateCart2(cart);
+      console.log("debounce", cart.odQty);
     }, 500),
+    throttlCart: _.throttle(function(cart) {
+      this.updateCart2(cart);
+      console.log("throttle", cart.odQty);
+    }, 10000),
   },
 };
 </script>
 
 <style>
+.cartListWrapper .cartQty:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: #eee;
+}
 .cartContents {
   position: relative;
   min-height: 390px;
@@ -325,6 +335,9 @@ export default {
   display: flex;
   position: relative;
   padding-left: 28px;
+}
+.cartListWrapper [class*="cartProduct"] {
+  width: 100%;
 }
 .cartListWrapper .cartQty {
   position: relative;
@@ -590,6 +603,40 @@ video {
   min-width: 166px;
   text-align: center;
 }
+.cartListWrapper .cartPrice:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: #eee;
+}
+.cartListWrapper .cartPrice {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 166px;
+}
+.cartListWrapper .cartPrice .currentPrice {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: -0.3px;
+  color: #333;
+  text-align: center;
+}
+.cartListWrapper strong {
+  font-weight: 700;
+}
 .cartListWrapper .cartQty {
   position: relative;
   display: -webkit-box;
@@ -658,5 +705,20 @@ input[type="submit"] {
   line-height: 1.47;
   letter-spacing: -0.3px;
   color: #333;
+}
+.pagination a[data-v-35e7960e],
+.pagination button[data-v-35e7960e],
+.pagination span[data-v-35e7960e] {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #999;
+  line-height: 27px;
+  margin: 0 2px;
+  text-indent: 8px;
+}
+.cartListWrapper + .cartListWrapper:not(.noHeader) {
+  margin-top: 25px;
 }
 </style>

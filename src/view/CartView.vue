@@ -103,6 +103,7 @@
                       v-on:deleteCart="deleteCart2"
                       @minus="minus2"
                       @add="add2"
+                      @itemChecking="itemChecking"
                     >
                     </cart-group>
                   </div>
@@ -146,7 +147,9 @@ export default {
       }
       let prodList = [];
       for (let c of cartList) {
-        prodList.push(...c.product);
+        c.product.checked = c.checked;
+        c.product.odQty = c.odQty;
+        prodList.push(c.product);
       }
       for (let c of cartList) {
         for (let p of prodList) {
@@ -178,11 +181,17 @@ export default {
       --cart.odQty;
       this.throttlCart(cart);
     },
-    updateCart2(cart) {
-      let updateTarget = {};
-      updateTarget.cartSn = cart.cartSn;
-      updateTarget.odQty = cart.odQty;
+    itemChecking(cart) {
+      // console.log(cartSn);
+      let updateTarget = cart;
+      updateTarget.checked = !cart.checked;
 
+      this.updateCart2(updateTarget);
+    },
+    updateCart2(cart) {
+      // let updateTarget = {};
+      // updateTarget.cartSn = cart.cartSn;
+      // updateTarget.odQty = cart.odQty;
       this.$store.dispatch("UPDATE_CART", cart);
     },
     updateCart: _.debounce(function(cart) {

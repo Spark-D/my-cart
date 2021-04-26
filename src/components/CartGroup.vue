@@ -29,6 +29,7 @@
         v-on:test="test2"
         @minusQty="minus"
         @addQty="add"
+        @itemCheck="itemCheck"
       ></cart-item>
     </ul>
     <!----><!---->
@@ -71,14 +72,21 @@ export default {
     add(cart) {
       this.$emit("add", cart);
     },
+    itemCheck(cart) {
+      // console.log(cartSn);
+      this.$emit("itemChecking", cart);
+    },
   },
   computed: {
     total() {
-      const arr = this.groupInfo.omCartList;
+      const arr = JSON.parse(JSON.stringify(this.groupInfo.omCartList));
       let total = 0;
       // console.log(...arr);
       for (const p in arr) {
-        total += arr[p].product[0].slPrc * arr[p].odQty;
+        // console.log(p);
+        if (arr[p].checked) {
+          total += arr[p].product.slPrc * arr[p].odQty;
+        }
       }
       return total;
     },

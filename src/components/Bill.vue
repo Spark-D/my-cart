@@ -66,12 +66,22 @@ export default {
     prodPrice() {
       let price = 0;
       for (let p of this.prodList) {
-        price += p.slPrc * p.qty;
+        // console.log(p.checked);
+        if (p.checked) {
+          price += p.slPrc * p.odQty;
+        }
       }
       return price;
     },
     prodCnt() {
-      return this.prodList.length;
+      let size = 0;
+      for (let p of this.prodList) {
+        // console.log(p.checked);
+        if (p.checked) {
+          ++size;
+        }
+      }
+      return size;
     },
   },
 };

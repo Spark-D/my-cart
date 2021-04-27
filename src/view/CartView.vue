@@ -70,6 +70,8 @@
                     id="checkboxController"
                     type="checkbox"
                     class="cur_hand"
+                    @click="allCheck"
+                    :checked="allChecked"
                   />
                   <label for="checkboxController" class="cur_hand"
                     >전체선택</label
@@ -104,6 +106,7 @@
                       @minus="minus2"
                       @add="add2"
                       @itemChecking="itemChecking"
+                      @grpCheck="grpCheckMthd2"
                     >
                     </cart-group>
                   </div>
@@ -146,6 +149,7 @@ export default {
         cartList.push(...c.omCartList);
       }
       let prodList = [];
+      // console.log("없어? ", cartList);
       for (let c of cartList) {
         c.product.checked = c.checked;
         c.product.odQty = c.odQty;
@@ -163,6 +167,16 @@ export default {
         }
       }
       return prodList;
+    },
+    allChecked() {
+      let bool = true;
+      for (let grp of this.getCartList) {
+        if (!grp.checked) {
+          bool = grp.checked;
+          break;
+        }
+      }
+      return bool;
     },
   },
   methods: {
@@ -182,16 +196,12 @@ export default {
       this.throttlCart(cart);
     },
     itemChecking(cart) {
-      // console.log(cartSn);
       let updateTarget = cart;
       updateTarget.checked = !cart.checked;
 
       this.updateCart2(updateTarget);
     },
     updateCart2(cart) {
-      // let updateTarget = {};
-      // updateTarget.cartSn = cart.cartSn;
-      // updateTarget.odQty = cart.odQty;
       this.$store.dispatch("UPDATE_CART", cart);
     },
     updateCart: _.debounce(function(cart) {
@@ -201,7 +211,29 @@ export default {
     throttlCart: _.throttle(function(cart) {
       this.updateCart2(cart);
       console.log("throttle", cart.odQty);
-    }, 10000),
+    }, 500),
+    grpCheckMthd2(trNo, checked) {
+      // console.log("mother", trNo);
+      for (let grp of this.getCartList) {
+        // console.log(grp.trNo);
+        if (grp.trNo == trNo) {
+          for (let pd of grp.omCartList) {
+            pd.checked = checked;
+            this.updateCart2(pd);
+          }
+        }
+      }
+    },
+    allCheck(e) {
+      console.log("allcheck", e.target.checked);
+      for (let grp of this.getCartList) {
+        grp.checked = e.target.checked;
+        for (let pd of grp.omCartList) {
+          pd.checked = e.target.checked;
+          this.updateCart2(pd);
+        }
+      }
+    },
   },
 };
 </script>

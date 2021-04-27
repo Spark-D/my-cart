@@ -9,7 +9,9 @@
           name="cart0_0"
           type="checkbox"
           class="cur_hand"
-          value="0"
+          :value="groupInfo.trNo"
+          @click="grpCheckMthd"
+          :checked="groupInfo.checked"
         /><label data-v-7f6b5e24="" for="cart0_0" class="cur_hand">
           {{ groupInfo.trNo }}
           <p data-v-7f6b5e24="" class="branch"></p
@@ -75,6 +77,10 @@ export default {
     itemCheck(cart) {
       // console.log(cartSn);
       this.$emit("itemChecking", cart);
+    },
+    grpCheckMthd(e) {
+      // console.log("group check", e.target.value, e.target.checked);
+      this.$emit("grpCheck", e.target.value, e.target.checked);
     },
   },
   computed: {

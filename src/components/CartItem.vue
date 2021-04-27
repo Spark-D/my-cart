@@ -37,7 +37,8 @@
           >
             <p class="productTitle">
               <strong>{{ compCartItemInfo.product.brdNm }}</strong>
-              {{ compCartItemInfo.product.spdNm }}
+              {{ compCartItemInfo.product.spdNm }} <br />
+              [{{ compCartItemInfo.trNo }}]
               <!-- [{{
                 compCartItemInfo.cartSn
               }}]<br />

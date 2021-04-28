@@ -203,15 +203,16 @@
                 </div>
                 <!---->
                 상품 목록
-                </a>
               </button>
             </li>
             <!-- <li data-v-03dd6781=""><a data-v-03dd6781="" href="//www.lotteon.com/p/mylotte/wish/main" class="heart">
               나의 찜
             </a></li>
-            <li data-v-03dd6781=""><a data-v-03dd6781="" href="//www.lotteon.com/p/mylotte/index/main" class="my">
-              마이롯데
-            </a></li> -->
+            <li data-v-03dd6781="">
+              <a data-v-03dd6781="" href="#/login" class="my">
+                로그인
+              </a>
+            </li>-->
             <li data-v-03dd6781="">
               <a data-v-03dd6781="" href="#/cart" class="cart">
                 장바구니
@@ -227,22 +228,23 @@
 
 <script>
 export default {
-  methods:{
+  methods: {
     iconClick() {
-      location.href="#/product"
-    }
-  }
+      location.href = "#/product";
+    },
+  },
 };
 </script>
 
 <style>
-#mainLayout header .main .buttonArea li a, #mainLayout header .main .buttonArea li button {
-    display: block;
-    width: 100%;
-    padding-top: 37px;
-    background-repeat: no-repeat;
-    background-size: 36px 36px;
-    background-position: center -1px;
-    text-align: center;
+#mainLayout header .main .buttonArea li a,
+#mainLayout header .main .buttonArea li button {
+  display: block;
+  width: 100%;
+  padding-top: 37px;
+  background-repeat: no-repeat;
+  background-size: 36px 36px;
+  background-position: center -1px;
+  text-align: center;
 }
 </style>

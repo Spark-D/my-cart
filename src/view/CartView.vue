@@ -86,7 +86,11 @@
                   >
                     <span>품절상품삭제</span>
                   </button>
-                  <button type="button" class="deleteCartItems">
+                  <button
+                    type="button"
+                    class="deleteCartItems"
+                    style="display:none"
+                  >
                     <span>선택삭제</span>
                   </button>
                 </div>
